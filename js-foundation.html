@@ -1,16 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS-Foundation </title>
 </head>
+
 <body>
     <h1 id="myHeading">Hello, World</h1>
 
     <button onclick="changeText()">Click Me</button>
 
 
+    <!-- EVENTS
+
+1. Mouse Events
+onclick(),  ondblclick(),  onmouseenter(),  onmouseleave(),  -->
+    <p id="mouseEvent">Mouse Event</p>
+    <button onclick="handleClick()">Click Me</button>
+
+    <p id="mouseEvent2">Mouse Event</p>
+    <input ondblclick="handleDoubleClick()" onmouseenter="handleMouseEnter()" onmouseleave="handleMouseLeave()">
+    Double-click or Hover-over me</innput>
+
+    <!-- 2. keyboard Events
+onkeydown(),  onkeyup(),  onkeypress() -->
+    <h6>Keyboard event</h6>
+    <input type="text" id="demo" onkeydown="handleKeyDown(event)" placeholder="Press key">
+
+
+
+    <!-- 3. Form Events
+onsubmit(),  onfocus(),  onblur(),  onchange() -->
+
+    <h4 id="formEvents"> Formevents will be displayed here</h4>
+
+    <form onSubmit="handleFormSubmit(event)">
+        <input type="text" onfocus="handleFocus()" onblur="handleBlur()" placeholder="Enter key">
+        <select onchange="handleChange()">
+            <option value="option1">Option1</option>
+            <option value="option2">Option2</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+    <!-- //DOM MANIPULATION -->
+    <!-- //1.Selecting Elements -->
+    <h3>This is a h3 element.</h3>
+    <h3>This is a h3 element.</h3>
+
+    <!-- 2. Changing Content
+      innerHTML(),  innerText(),  textContent() -->
+    <!-- <p id="textChange" onclick="myFunction()">Click me to change my textual content.</p> -->
+
+
+
+    <!-- 3. Modifying Attributes
+       setAttribute(),  getAttribute(),  removeAttribute()-->
+
+    <!-- setAttribute() -->
+    <!-- <input id="input" value="OK">
+    <button onclick="handleSetAttribute()">Try it</button> -->
+
+
+    
+    <!-- 4. Event Handling(addEventLisitener()) -->
+    <p id="eventHandle">hello</p>
+    <button id="myBtn">AddEventListener</button>
+    
+
+
+    <script>
+        //Mouse Event  
+        function handleClick() {
+            document.getElementById("mouseEvent").innerHTML = "Mouse Clicked";
+        }
+
+        function handleDoubleClick() {
+            document.getElementById("mouseEvent2").innerHTML = "Mouse double Clicked";
+        }
+
+        function handleMouseEnter() {
+            document.getElementById("mouseEvent2").innerHTML = "Mouse enter";
+        }
+
+        function handleMouseLeave() {
+            document.getElementById("mouseEvent2").innerHTML = "Mouse leave";
+        }
+
+
+        //Keyboard Event      
+        function handleKeyDown(event) {
+            document.getElementById("demo").style.backgroundColor = "red";
+        }
+
+
+        //Form Event
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            document.getElementById("formEvents").innerHTML = "Form submitted";
+        }
+
+        function handleFocus() {
+            document.getElementById("formEvents").innerHTML = "Input field focused";
+        }
+
+        function handleBlur() {
+            document.getElementById("formEvents").innerHTML = "Input field lost focus";
+        }
+
+        function handleChange() {
+            document.getElementById("formEvents").innerHTML = "selecction changed";
+        }
+
+
+        //DOM MANIPULATION
+        //1.Selecting Elements
+        document.querySelector("h3").style.backgroundColor = "red";
+
+        //2. Changing Content
+        // function myFunction() {
+        //     document.getElementById("textChange").innerHTML = "Paragraph changed!";
+        // }
+
+        //3.Modifying Attributes 
+        // function handleSetAttribute() {
+        //     document.getElementsById("input").setAttribute("type", "button");
+        // }
+
+        //4. Evenet Handling
+        document.getElementById("myBtn").addEventListener("click", function () {
+            document.getElementById("eventHandle").innerHTML = "Button clicked";
+        });
+
+
+    </script>
+
+
     <script src="js-foundation.js"></script>
 </body>
+
 </html>

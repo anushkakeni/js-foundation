@@ -9,6 +9,8 @@ console.log(name, age);
 var x = null;
 console.log("x is : ", x);
 
+
+
 //OPERATORS
 
 //Arithmetic
@@ -35,7 +37,11 @@ var decrement = 3;
 decrement--
 console.log("3--  : ", decrement);
 
-console.log("String - int= ", "5" * null );
+console.log("String + int= ", "5" + 9 );
+console.log("String - int= ", "5" - 0 );
+console.log("String * int= ", "5" * 6 );
+console.log("String / int= ", "5" / 8 );
+console.log("String / null= ", "5" / null );
 
 
 //Comparison Operator
@@ -49,9 +55,11 @@ console.log("7 < '5' :", 7 < '5'); // Less than
 
 //Logical Operator
 console.log("true && false", true && false)// Logical AND operator
+console.log("1 && 2", 1 && 2, "both operands are true then display second operand")// Logical AND operator
 console.log("true || false", true || false)// LogicalOR operator
+console.log("1 || 2", 1 || 2,"display first true operand")// LogicalOR operator
 console.log("!true", !true )//  Logical NOT operator
-
+console.log("!1", !1, "int is considered truthy value")//  Logical NOT operator
 
 //Assignment Operator
 var x = 5 ;
@@ -84,7 +92,8 @@ var car = {
 
     getinfo: function()
     {
-        return this.brand ; // this 
+        // this- In an object method, this refers to the object,, is an undefined
+        return this.brand ;  // here this is car{}
     }
 };
 console.log(car.getinfo());
@@ -101,7 +110,7 @@ console.log(car.brand + car.model);
 
 //Arrays
 var colors = ["Red", "Green","Blue", "Yellow"];
-console.log(colors[2]);
+console.log("Array: ",colors[2]);
 
 
 
@@ -114,7 +123,7 @@ function greet(name)   //function Declaration
 greet("Anushka");    //function Calling
 
 
-var sayGoodbye = function(name)  //function Expression
+var sayGoodbye = function(name)  //function Expression- assigning function to a variable
 {
     console.log("Goodbye" + name);
 };
@@ -135,11 +144,11 @@ console.log(sum);
  // syntax- 
  //          var variableName = function() { code to be executed}
 //function has no name, called anonymous function
- const x = function (a, b) {return a * b};
- console.log("x(1,2)=", x(1,2));
-  console.log("x=",(x));
+ const functionSum = function (a,b) {return a * b};
+ console.log("x(1,2)=", functionSum(1,2));
+  console.log("x=",(functionSum));
 
-   let  z= x(4, 3); 
+   let  z= functionSum(4, 3); 
    console.log(z);
 
 
@@ -149,7 +158,7 @@ console.log(sum);
 
 const myFunction = new Function("a", "b", "return a * b");
 
-let x = myFunction(4, 3);
+let c = myFunction(4, 3);
 
 
 //function hoisting
@@ -159,8 +168,8 @@ let x = myFunction(4, 3);
 // All variable and function declarations are processed before any code execution.
 // Undeclared variables are implicitly created as global variables when assigned a value.
 
-myFunction(3);
-function myFunction(y)
+myFunctionProduct(3);
+function myFunctionProduct(y)
 {
     console.log("y=",y);      
     console.log("y*y=",y*y);
@@ -178,10 +187,10 @@ function myFunction(y)
  
 
 //function as a value
-function myFunction(a, b) {
+function myFunctionAsValue(a, b) {
     return a * b;
   }
-  let s = myFunction(4, 3) * 2;
+  let s = myFunctionAsValue(4, 3) * 2;
   console.log("s=",s);
 
 
@@ -193,10 +202,10 @@ console.log("b=",b(4, 3));
 
 
 //arguments length
-function myFunction(a, b) {
+function myFunctionArgumentLength(a, b) {
     console.log(arguments.length);
   }
-  myFunction(4, 3, 2, 1, 5, 6, 7, 8, 9, 10);  //output - 10
+  myFunctionArgumentLength(4, 3, 2, 1, 5, 6, 7, 8, 9, 10);  //output - 10
 
   
 
@@ -464,9 +473,9 @@ arr.forEach(function(item, index, array)   //  OR   arr.forEach(myFunction);
 //syntax- array.map(function(currentValue, index, arr), thisvalue)
 //thisvalue- optional
 var numbers = [65, 44, 12, 4];
-var newarray = numbers.map(myFunction)
+var newarray = numbers.map(myFunctionMapArray)
 
-function myFunction(num) {
+function myFunctionMapArray(num) {
   return num * 10;
 }
 console.log(newarray);
@@ -477,9 +486,9 @@ console.log(newarray);
 //syntax- array.filter(function(currentValue, index, arr), thisValue)
 
 var numbers = [65, 44, 12, 4];
-var newarray = numbers.filter(myFunction)
+var newarray = numbers.filter(myFunctionFilter)
 
-function myFunction(num) 
+function myFunctionFilter(num) 
 {
   return num > 20;
 }
@@ -500,9 +509,9 @@ console.log("indexOf 7 :",index1);
 //syntax:- array.reduce(function(total, currentValue/num, currentIndex, array), initalindex)
 
 var numbers = [65, 44, 12, 4];
-var sum = numbers.reduce(myFunction)
+var sum = numbers.reduce(myFunctionReduce)
 
-function myFunction(total, num) 
+function myFunctionReduce(total, num) 
 {
   return total + num;
 }
@@ -688,17 +697,17 @@ logMessage(greet, "Alice");
 //Functions running in parallel with other functions are called asynchronous
 //example is JavaScript setTimeout()
 
-setTimeout(myFunction, 3000);   //myFunction ia callback function passed as argument, do not use "()"
+setTimeout(myFunctionAsync, 3000);   //myFunction ia callback function passed as argument, do not use "()"
 
-function myFunction() {
+function myFunctionAsync() {
   console.log( "I love You !!");
 }
 
 //or
 
-setInterval(myFunction, 1000);   //step1- mainfunction(callback, millisecond);
+setInterval(myFunctionAsyncronous, 1000);   //step1- mainfunction(callback, millisecond);
 
-function myFunction()             //step2  - define  callback function
+function myFunctionAsyncronous()             //step2  - define  callback function
 {
     let d= new Date();
 
